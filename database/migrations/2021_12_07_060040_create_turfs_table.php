@@ -20,7 +20,7 @@ class CreateTurfsTable extends Migration
             $table->string('address');
             $table->float('latitude');
             $table->float('longitude');
-            $table->string('profile_picture_file_path');
+            $table->string('profile_picture_file_path')->nullable();
             $table->timestamps();
         });
     }
