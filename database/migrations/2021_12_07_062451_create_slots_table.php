@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTurfsTable extends Migration
+class CreateSlotsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class CreateTurfsTable extends Migration
      */
     public function up()
     {
-        Schema::create('turfs', function (Blueprint $table) {
+        Schema::create('slots', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('address');
-            $table->point('position');
-            $table->string('profile_picture_file_path');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->dateTime('start_time');
+            $table->dateTime('end_time');
+            $table->float('price');
             $table->timestamps();
         });
     }
@@ -30,6 +30,6 @@ class CreateTurfsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('turfs');
+        Schema::dropIfExists('slots');
     }
 }
