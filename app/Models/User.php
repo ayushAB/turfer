@@ -58,4 +58,12 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+    /**
+     * Get the turfs for the User.
+     */
+    public function turfs()
+    {
+        return $this->hasMany(Turf::class);
+    }
 }
