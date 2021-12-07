@@ -15,9 +15,11 @@ class CreateTurfsTable extends Migration
     {
         Schema::create('turfs', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->string('name');
             $table->string('address');
-            $table->point('position');
+            $table->float('latitude');
+            $table->float('longitude');
             $table->string('profile_picture_file_path');
             $table->timestamps();
         });
