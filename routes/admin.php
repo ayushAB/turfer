@@ -15,6 +15,6 @@ use Inertia\Inertia;
 */
 
 
-Route::get('/', function () {
-    dd('Welcome to admin user routes.');
-});
+Route::middleware(['auth:sanctum', 'verified', 'userhasrole:owner'])->get('/dashboard', function () {
+    return Inertia::render('Admin/Dashboard');
+})->name('dashboard');
