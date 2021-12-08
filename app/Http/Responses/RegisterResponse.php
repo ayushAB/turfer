@@ -1,10 +1,9 @@
 <?php
 
-namespace Laravel\Fortify\Http\Responses;
+namespace App\Http\Responses;
 
 use Illuminate\Http\JsonResponse;
 use Laravel\Fortify\Contracts\RegisterResponse as RegisterResponseContract;
-use Laravel\Fortify\Fortify;
 
 class RegisterResponse implements RegisterResponseContract
 {
@@ -16,12 +15,11 @@ class RegisterResponse implements RegisterResponseContract
      */
     public function toResponse($request)
     {
-
         if (!$request->wantsJson()) {
             if ($request->user()->role === "owner") {
                 return redirect()->intended("/admin/dashboard");
             } else {
-                return redirect()->intended(Fortify::redirects('register'));
+                return redirect()->intended("/dashboard");
             }
         } else {
             return new JsonResponse('', 201);
