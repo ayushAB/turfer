@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\User\UserController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -24,6 +25,10 @@ Route::get('/', function () {
     ]);
 });
 
-Route::middleware(['auth:sanctum', 'verified', 'userhasrole:user'])->get('/dashboard', function () {
-    return Inertia::render('Dashboard');
-})->name('dashboard');
+// Route::middleware()->get('/dashboard', function () {
+   
+// })->name('dashboard');
+
+Route::group(['middleware' => ['auth:sanctum', 'verified', 'userhasrole:user']],function () {
+    Route::resource('/dashboard', UserController::class)->names(['index' => 'dashboard']);
+});

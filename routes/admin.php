@@ -2,7 +2,7 @@
 
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
-use Inertia\Inertia;
+use App\Http\Controllers\Admin\OwnerController;
 /*
 |--------------------------------------------------------------------------
 | Admin Routes
@@ -14,7 +14,6 @@ use Inertia\Inertia;
 |
 */
 
-
-Route::middleware(['auth:sanctum', 'verified', 'userhasrole:owner'])->get('/dashboard', function () {
-    return Inertia::render('Admin/Dashboard');
-})->name('dashboard');
+Route::group(['middleware' => ['auth:sanctum', 'verified', 'userhasrole:owner']], function () {
+    Route::resource('/dashboard', OwnerController::class)->names(['index' => 'dashboard']);
+});

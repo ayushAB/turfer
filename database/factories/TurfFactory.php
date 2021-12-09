@@ -21,6 +21,7 @@ class TurfFactory extends Factory
             'address' => $this->faker->address(),
             'latitude' => $this->faker->latitude(),
             'longitude' => $this->faker->longitude(),
+            'profile_picture_file_path' => $this->faker->imageUrl(500,500)
         ];
     }
 }
