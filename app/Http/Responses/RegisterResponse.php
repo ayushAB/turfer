@@ -17,7 +17,7 @@ class RegisterResponse implements RegisterResponseContract
     {
         if (!$request->wantsJson()) {
             if ($request->user()->role === "owner") {
-                return redirect()->intended("/admin/dashboard");
+                return redirect()->intended("/admin/admin-dashboard");
             } else {
                 return redirect()->intended("/dashboard");
             }

@@ -25,10 +25,7 @@ Route::get('/', function () {
     ]);
 });
 
-// Route::middleware()->get('/dashboard', function () {
-   
-// })->name('dashboard');
 
-Route::group(['middleware' => ['auth:sanctum', 'verified', 'userhasrole:user']],function () {
-    Route::resource('/dashboard', UserController::class)->names(['index' => 'dashboard']);
+Route::group(['middleware' => ['auth:sanctum', 'verified', 'userhasrole:user']], function () {
+    Route::resource('/dashboard', UserController::class)->names(['index' => 'user-dashboard']);
 });

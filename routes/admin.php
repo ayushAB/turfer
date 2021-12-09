@@ -15,5 +15,5 @@ use App\Http\Controllers\Admin\OwnerController;
 */
 
 Route::group(['middleware' => ['auth:sanctum', 'verified', 'userhasrole:owner']], function () {
-    Route::resource('/dashboard', OwnerController::class)->names(['index' => 'dashboard']);
+    Route::resource('/admin-dashboard', OwnerController::class)->names(['index' => 'admin-dashboard']);
 });

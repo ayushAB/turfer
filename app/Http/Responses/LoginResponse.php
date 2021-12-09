@@ -15,7 +15,7 @@ class LoginResponse implements LoginResponseContract
         // the user can be located with Auth facade
         if (!$request->wantsJson()) {
             if ($request->user()->role === "owner") {
-                return redirect()->intended("/admin/dashboard");
+                return redirect()->intended("/admin/admin-dashboard");
             } else {
                 return redirect()->intended(config('fortify.home'));
             }
