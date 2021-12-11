@@ -17,11 +17,13 @@ class TurfFactory extends Factory
     {
         return [
             'user_id' => User::factory(),
-            'name' => $this->faker->name(),
+            'name' => $this->faker->company(),
+            'city' => $this->faker->city(),
+            'country' => $this->faker->country(),
             'address' => $this->faker->address(),
             'latitude' => $this->faker->latitude(),
             'longitude' => $this->faker->longitude(),
-            'profile_picture_file_path' => $this->faker->imageUrl(500,500)
+            'profile_picture_file_path' => $this->faker->imageUrl(500, 500, 'cats')
         ];
     }
 }

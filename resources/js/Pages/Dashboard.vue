@@ -69,6 +69,7 @@
                             focus:outline-none
                             focus:ring-0
                             focus:ring-transparent
+                            px-2
                         "
                         type="text"
                         placeholder="Search"
@@ -102,11 +103,7 @@
                 <h1 class="text-2xl text-gray-400">Turfs</h1>
             </div>
             <div class="max-w-7xl grid grid-cols-2 gap-6 mt-10 mx-auto sm:px-6 lg:px-8 relative">
-                <Turf />
-                <Turf />
-                <Turf />
-                <Turf />
-                <Turf />
+                <Turf v-for="(turf,index) in turfs" :key="index" :turf="turf" />
             </div>
         </div>
     </app-layout>
@@ -124,5 +121,6 @@ export default defineComponent({
         Welcome,
         Turf,
     },
+    props:['turfs']
 });
 </script>

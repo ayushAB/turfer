@@ -15,9 +15,9 @@ class CreateSlotsTable extends Migration
     {
         Schema::create('slots', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->dateTime('start_time');
-            $table->dateTime('end_time');
+            $table->foreignId('turf_id')->constrained()->onDelete('cascade');
+            $table->dateTime('start_date_time');
+            $table->dateTime('end_date_time');
             $table->float('price');
             $table->timestamps();
         });

@@ -27,5 +27,7 @@ Route::get('/', function () {
 
 
 Route::group(['middleware' => ['auth:sanctum', 'verified', 'userhasrole:user']], function () {
-    Route::resource('/dashboard', UserController::class)->names(['index' => 'user-dashboard']);
+    Route::get('/dashboard', [UserController::class, 'index'])->name('user-dashboard');
+
+    Route::get('/turf/{turf}', [UserController::class, 'show'])->name('turf');
 });

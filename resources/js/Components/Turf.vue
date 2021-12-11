@@ -1,5 +1,6 @@
 <template>
-    <div class="flex flex-col items-center group">
+<!--  -->
+    <a :href="route('turf', turf.id)"  class="flex flex-col items-center group">
         <div
             class="
                 w-full
@@ -18,15 +19,18 @@
             <div class="w-2/5 overflow-hidden">
                 <img
                     class="object-cover"
-                    src="https://images.unsplash.com/photo-1638628578277-94c775a02e61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1546&q=80"
+                    :src="turf.profile_picture_file_path"
                 />
             </div>
             <div class="flex-1 flex flex-col bg-white justify-between px-4 py-3">
                 <div>
-                    <h1 class="text-xl text-gray-800">Berlin</h1>
-                    <div class="flex items-center">
+                    <h1 class="text-xl text-gray-800">{{turf.name}}</h1>
+                    <!-- <div class="flex items-center">
                         <h3 class="line-through text-gray-400">$390</h3>
                         <h3 class="ml-1 text-sm text-gray-400">$290</h3>
+                    </div> -->
+                    <div class="text-xs text-gray-500">
+                        {{ turf.address }}
                     </div>
                 </div>
                 <div>
@@ -43,8 +47,8 @@
                                 clip-rule="evenodd"
                             />
                         </svg>
-                        <span class="ml-1 text-base text-gray-400"
-                            >Germany</span
+                        <span class="ml-1 text-xs text-gray-400"
+                            >{{turf.city}},{{turf.country}}</span
                         >
                     </div>
                 </div>
@@ -68,13 +72,21 @@
                 pb-1
             "
         >
-            View
+            Book now
         </div>
-    </div>
+    </a>
 </template>
 
 <script>
 import { defineComponent } from "vue";
 
-export default defineComponent({});
+export default defineComponent({
+
+    props: {
+        turf:{
+            type: Object,
+            default: {}
+        }
+    }
+});
 </script>
