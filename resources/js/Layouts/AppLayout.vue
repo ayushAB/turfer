@@ -410,7 +410,7 @@ export default defineComponent({
     },
 
     mounted() {
-        console.log(route());
+      //  console.log(route());
     },
     methods: {
         switchToTeam(team) {

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Inertia\inertia;
 use App\Models\Turf;
+use App\Models\Slot;
 
 class UserController extends Controller
 {
@@ -50,10 +51,13 @@ class UserController extends Controller
      */
     public function show(Turf $turf)
     {
-        $turf->load([""]);
+        $turf->load(['slots']);
+
+        $availableSlots = $turf->slots()->doesntHave('bookings')->get();
         
         return Inertia::render('Turf/Index', [
-            'turf' => $turf
+            'turf' => $turf,
+            'available_slots' => $availableSlots
         ]);
     }
 
