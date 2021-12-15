@@ -3,7 +3,7 @@
       <div class="px-2 py-3 text-gray-400 text-center">Slot-{{turfSlot.id}}</div>
       <div class="py-3 text-gray-400 text-center">{{turfSlot.start_date_time}}</div>
       <div class="py-3 text-gray-400 text-center">{{turfSlot.end_date_time}}</div>
-      <div class="bg-blue-500 text-white text-center py-3">Book now</div>
+      <a href="#" class="bg-blue-500 text-white text-center py-3">Book now</a >
   </div>
 </template>
 
