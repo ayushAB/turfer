@@ -30,6 +30,8 @@ export default defineComponent({
         AppLayout,
         Slot
     },
-    props:['turf','available_slots']
+    props:['turf','available_slots'],
+    setup(){
+    }
 });
 </script>

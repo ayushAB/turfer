@@ -6,7 +6,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Inertia\inertia;
 use App\Models\Turf;
-use App\Models\Slot;
+use App\Models\Booking;
+use Carbon\Carbon;
+
 
 class UserController extends Controller
 {
@@ -27,9 +29,14 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        
+        $booking = new Booking();
+        $booking->slot_id = $request['slot_id'];
+        $booking->user_id = Auth()->user()->id;
+        $booking->date = Carbon::now();
+        $booking->save();
+        return back()->with('flash.banner', __('booking successfull'));
     }
 
     /**
@@ -42,7 +49,9 @@ class UserController extends Controller
     {
         $turf->load(['slots']);
 
-        $availableSlots = $turf->slots()->doesntHave('bookings')->get();
+        $availableSlots = $turf->slots()
+                                ->doesntHave('bookings')
+                                ->get();
         
         return Inertia::render('Turf/Index', [
             'turf' => $turf,

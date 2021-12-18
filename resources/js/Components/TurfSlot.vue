@@ -10,7 +10,8 @@
 
 <script>
 import { defineComponent, ref } from "vue";
-import Dailog from '@/Components/Common/Dailog.vue'
+import Dailog from '@/Components/Common/Dailog.vue';
+import { Inertia } from "@inertiajs/inertia";
 
 export default defineComponent({
     components: {Dailog},
@@ -20,12 +21,19 @@ export default defineComponent({
             default: {}
         }
     },
-    setup() {
+    setup(props) {
         const isOpen = ref(false)
 
         // 
         const bookSlot = () => {
-            console.log('booked');
+            Inertia.post(route('book'), {
+                "slot_id": props.turfSlot.id
+            },{
+                    onSuccess: () => (isOpen.value = false),
+                    onError: (error) => {
+                        console.log(error)
+                    }
+                })
         }
         return { isOpen, bookSlot }
     }

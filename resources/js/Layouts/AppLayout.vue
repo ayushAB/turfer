@@ -1,5 +1,6 @@
 <template>
     <div>
+        <jet-banner />
         <div class="min-h-screen">
             <nav class="bg-white border-b border-gray-100">
                 <!-- Primary Navigation Menu -->

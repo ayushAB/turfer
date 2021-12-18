@@ -28,6 +28,6 @@ Route::get('/', function () {
 
 Route::group(['middleware' => ['auth:sanctum', 'verified', 'userhasrole:user']], function () {
     Route::get('/dashboard', [UserController::class, 'index'])->name('user-dashboard');
-
     Route::get('/turf/{turf}', [UserController::class, 'show'])->name('turf');
+    Route::post('/turf/book', [UserController::class, 'create'])->name('book');
 });
